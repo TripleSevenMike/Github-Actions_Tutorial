@@ -12,3 +12,18 @@ jobs:
                 node -v
                 npm -v
                 
+
+    parallel-job-macos:
+      runs-on: macos-latest
+      steps:
+        - name: View software version
+          run: sw_vers
+
+    dependeant-job:
+      runs-on: windows-latest
+      needs: [run-shell-commands, parallel-job-macos]
+      steps:
+        - name: echo a string
+          run: echo "Hello world!"
+        - name: Error Step
+          run: sadasd
