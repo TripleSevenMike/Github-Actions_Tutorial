@@ -8,9 +8,8 @@ jobs:
       - name: simple JS action
         uses:  actions/hello-world-javascript-action@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-          color: 'red'
+          who-to-greet: 'Michu'
       - name: Log greeting time
         run: |
-          echo "The time was ${{ steps.simple-action.outputs.time }}"
-          echo "The time was ${{ steps.greet.outputs.time }}"
+          echo "${{ steps.simple-action.outputs.time }}"
+          echo "${{ steps.greet.outputs.time }}"
