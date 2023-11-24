@@ -1,0 +1,16 @@
+name: Simple Action
+on: push
+
+jobs:
+  simple-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: simple JS action
+        uses:  actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+          color: 'red'
+      - name: Log greeting time
+        run: |
+          echo "The time was ${{ steps.simple-action.outputs.time }}" <- odwołanie do stepu przez nazwe akcji
+          echo "The time was ${{ steps.greet.outputs.time }}" <- odwołanie do stepu przez id stepu
