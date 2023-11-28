@@ -1,8 +1,27 @@
 name: Repository Events
 on:
   push:
+#    ten workflow wystartuje kiedy wszystkie filtry pasują!!!
+    branches:
+      - main
+      - "feature/*"
+      - "feature/**"
+      - "!featrue/ignore"
+#        Kolejność ma znaczenie! wymieniamy od najogólniejszego
+#    branches-ignore:        Branches i Branches-ignore nie mogą być razem. Wyłączenie gałęzi tak jak w linijce wyżej
+#      - "feature/ignore"
+  tags:
+    - v1.* # v1.0, v1.1, v1.2
+    - "!v1.1.1"
+  paths:
+    - "**.js" #Push zawiera plik który pasuje do formatu
+    - "!app.js"
   pull_request:
     types: [opened, assigned, reopened, synchronize]
+    branches:
+      - main
+    paths:
+      - "**.js"
   issues:
     types: [opened]
 
