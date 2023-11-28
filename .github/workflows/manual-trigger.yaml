@@ -37,4 +37,10 @@ jobs:
       - name: Log info
         run: |
           echo $GITHUB_REF
+          echo "String: ${{inputs.string}}"
+          echo "Num: ${{inputs.number}}"
+          echo "Option: ${{inputs.option}}"
+          echo "Bool: ${{inputs.boolean}}"
+          echo "Env: ${{inputs.environment}}"
+          
           
