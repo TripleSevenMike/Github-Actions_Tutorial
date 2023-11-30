@@ -7,7 +7,7 @@ env:
 jobs:
   env-vars-and-context:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # In this place its obligatory to use context
+    if: github.ref == 'refs/heads/master' # In this place its obligatory to use context
     env:
       JOB_LEVEL_ENV: Available to this job
     steps:
