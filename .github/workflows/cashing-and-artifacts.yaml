@@ -1,4 +1,4 @@
-name: Cashing and Artifacts
+name: Caching and Artifacts
 on: workflow_dispatch
 
 jobs:
@@ -7,6 +7,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Cache node modules
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: "npm-cache"
+      - name: Display Cache outpu
+        run: echo '${{ toJSON(steps.cache-dependencies.outputs) }}'
       - name: Install dependencies
         run: npm install
       - name: Use Axios
