@@ -21,6 +21,18 @@ jobs:
         run: echo '${{ toJSON(steps.cache-dependencies.outputs) }}'
       - name: Install dependencies
         run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: code-coverage
+          path: coverage
+          retention-days: 1 #jak długo artefakt bedzie dostępny. Domyslnie 90 dni
+
       - name: Use Axios
         uses: actions/github-script@v6
         with:
