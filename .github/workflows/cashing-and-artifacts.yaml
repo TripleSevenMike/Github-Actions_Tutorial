@@ -40,11 +40,11 @@ jobs:
           name: code-coverage
           path: code-coverage-report
 
-      - name: Display directory content
+
       - run: ls -a
       - run: ls -a
         working-directory: code-coverage-report
-        if: always()
+
 
 
       - name: Use Axios
