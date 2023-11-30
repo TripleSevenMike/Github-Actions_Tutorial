@@ -1,0 +1,27 @@
+name: Docker
+on: workflow_dispatch
+
+jobs:
+  dokcer-job:
+    runs-on: ubuntu-latest
+    container:
+      image: node:20.3-alpine3.17
+#      credentials: used for private images
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      env:
+        API_URL: some-url.com
+      ports:
+        - 80
+#      volumes:
+#        - vol_name:/path/in/container
+#        - path/to/container
+#        - /path/in/host:/path/in/container
+#      options: --cpus 1
+    steps:
+      - name: Log Node & OS Version
+        run: |
+          node -v
+          cat /etc/or-release
+      - name: Log Env
+        run: echo $API_URL
