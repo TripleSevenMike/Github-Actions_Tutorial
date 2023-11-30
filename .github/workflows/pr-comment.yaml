@@ -3,13 +3,19 @@ on:
   pull_request_target:
     types:
       - opened
+      
 jobs:
   pr-comment:
     runs-on: ubuntu-latest
+    permissions: #pozwala na modyfikacje tokena. Teraz token ma tylko możliwości wypisane niżej. nic więcej!
+      issues: write
+      contents: read
     steps:
       - name: Add comment to new PR. (via GITHUB JS rest api)
         uses: actions/github-script@v6
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}} # tego nie trzeba robic. W Worflow ten token jest automatycznie podawany do akcji
+          # taki token jest generowany za każdym razem gdy jakiś workflow startuje
           script: |
             github.rest.issues.createComment({
               owner: context.repo.owner,
